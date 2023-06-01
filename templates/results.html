@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITLE</title>
+    <title>Your Results</title>
 </head>
 <body>
-    
+    <h1>Your Results</h1>
+    {%if prediction == null%}
+    <h2>oops... no prediction available</h2>
+    {%else%}
+    {{prediction}}
+    {%endif%}
+    <br><br>
+    <a href="/">Home</a>
 </body>
 </html>
