@@ -12,36 +12,36 @@
     <form method="POST", action="{{url_for('apply')}}">
         <div class="mb-6">
             <label for="Pikachu" class="form-label">Name</label>
-            <input type="text" class="form-control" name="name">
+            <input required='required' type="text" class="form-control" name="name">
         </div>
 
         <div class="row">
             <div class="col">
                 <div class="mb-3">
                     <label for="" class="form-label">HP</label>
-                    <input type="number" class="form-control" name="hp">
+                    <input required='required' type="number" class="form-control" name="hp">
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Attack</label>
-                    <input type="number" class="form-control" name="attack">
+                    <input required='required' type="number" class="form-control" name="attack">
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Defense</label>
-                    <input type="number" class="form-control" name="defense">
+                    <input required='required' type="number" class="form-control" name="defense">
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <label for="" class="form-label">Speed</label>
-                    <input type="number" class="form-control" name="speed">
+                    <input required='required' type="number" class="form-control" name="speed">
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">SP Attack</label>
-                    <input type="number" class="form-control" name="sp_attack">
+                    <input required='required' type="number" class="form-control" name="sp_attack">
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">SP Defense</label>
-                    <input type="number" class="form-control" name="sp_defense">
+                    <input required='required' type="number" class="form-control" name="sp_defense">
                 </div>
             </div>
         </div>

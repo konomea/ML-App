@@ -18,19 +18,20 @@ def apply():
     if request.method == "POST":
         #collect information from request.form['id']
         name = request.form['name']
-        hp = request.form['hp']
-        attack = request.form['attack']
-        defense = request.form['defense']
-        speed = request.form['speed']
-        sp_attack = request.form['sp_attack']
-        sp_defense = request.form['sp_defense']
+        hp = int(request.form['hp'])
+        attack = int(request.form['attack'])
+        defense = int(request.form['defense'])
+        speed = int(request.form['speed'])
+        sp_attack = int(request.form['sp_attack'])
+        sp_defense = int(request.form['sp_defense'])
 
         
         # #put fields into this to be collected later
-        x = np.array([[name, hp, attack, defense, speed, sp_attack, sp_defense]])
-        # y_pred = model.predict(x) #USE MODEL TO GIVE INPUTS HERE
+        x = [[hp, attack, defense, speed, sp_attack, sp_defense]]
+        y_pred = model.predict(x) #USE MODEL TO GIVE INPUTS HERE
         
-        return render_template('results.html', prediction = x)
+        
+        return render_template('results.html', prediction = y_pred, stats = x, name = name)
     
     else:
         return render_template('index.html')

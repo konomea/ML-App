@@ -11,7 +11,9 @@
     {%if prediction == null%}
     <h2>oops... no prediction available</h2>
     {%else%}
+    {{name}}
     {{prediction}}
+    {{stats}}
     {%endif%}
     <br><br>
     <a href="/">Home</a>
