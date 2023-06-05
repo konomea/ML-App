@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>APPLICATION FORM</title>
+</head>
+<body>
+    <div class="container bg-light rounded p-3">
+        <form method="POST", action="{{url_for('apply')}}">
+            <div class="mb-6">
+                <label for="Pikachu" class="form-label">Name</label>
+                <input required='required' type="text" class="form-control" name="name">
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="" class="form-label">HP</label>
+                        <input required='required' type="number" class="form-control" name="hp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Attack</label>
+                        <input required='required' type="number" class="form-control" name="attack">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Defense</label>
+                        <input required='required' type="number" class="form-control" name="defense">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Speed</label>
+                        <input required='required' type="number" class="form-control" name="speed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">SP Attack</label>
+                        <input required='required' type="number" class="form-control" name="sp_attack">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">SP Defense</label>
+                        <input required='required' type="number" class="form-control" name="sp_defense">
+                    </div>
+                </div>
+            </div>
+                
+            <br><br>
+
+            <input type="radio" class="btn-check" name="type" name="type1" autocomplete="off" checked>
+            <label for="type 1" class="btn btn-secondary">Type 1</label>
+            <input type="radio" class="btn-check" name="type" name="type2" autocomplete="off">
+            <label for="type 2" class="btn btn-secondary">Type 2</label>
+
+            <br><br>
+            
+            <button type="submit" class="btn">CREATE</button>
+            
+        </form>
+    </div>
+        
+</body>
+</html>
+    

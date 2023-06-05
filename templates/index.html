@@ -4,65 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <title>TITLE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='scss/main.css') }}">
+    <title>Home</title>
 </head>
-<body>
-    Hello World
-    <form method="POST", action="{{url_for('apply')}}">
-        <div class="mb-6">
-            <label for="Pikachu" class="form-label">Name</label>
-            <input required='required' type="text" class="form-control" name="name">
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <div class="mb-3">
-                    <label for="" class="form-label">HP</label>
-                    <input required='required' type="number" class="form-control" name="hp">
-                </div>
-                <div class="mb-3">
-                    <label for="" class="form-label">Attack</label>
-                    <input required='required' type="number" class="form-control" name="attack">
-                </div>
-                <div class="mb-3">
-                    <label for="" class="form-label">Defense</label>
-                    <input required='required' type="number" class="form-control" name="defense">
-                </div>
+<body class="bg-primary">
+    <section id="nav-bar">
+        {% include 'nav.html' %}
+    </section>
+    
+    <!-- welcome -->
+    <section id="welcome">
+        <h1 class="text-light text-center pt-5 pb-3">Welcome to POKCreate!</h1>
+        <div class="row align-items-center">
+            <div class="col-md-6 col-xs-12">
+                <img src="{{url_for('static', filename='images/mascot.png')}}" alt="Blue and white bunny pokemon" class="vertical_image">
             </div>
-            <div class="col">
-                <div class="mb-3">
-                    <label for="" class="form-label">Speed</label>
-                    <input required='required' type="number" class="form-control" name="speed">
-                </div>
-                <div class="mb-3">
-                    <label for="" class="form-label">SP Attack</label>
-                    <input required='required' type="number" class="form-control" name="sp_attack">
-                </div>
-                <div class="mb-3">
-                    <label for="" class="form-label">SP Defense</label>
-                    <input required='required' type="number" class="form-control" name="sp_defense">
-                </div>
+            <div class="col-md-6 col-xs-12">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis porro in autem quia atque accusantium.
+                </p>
             </div>
         </div>
-             
-        <br><br>
+    </section>
 
-        <input type="radio" class="btn-check" name="type" name="type1" autocomplete="off" checked>
-        <label for="type 1" class="btn btn-secondary">Type 1</label>
-        <input type="radio" class="btn-check" name="type" name="type2" autocomplete="off">
-        <label for="type 2" class="btn btn-secondary">Type 2</label>
-
-        <br><br>
-        
-        <!-- <div class="form-check form-switch">
-            <input type="checkbox" role="switch" name="legendary" class="form-check-input">
-            <label for="legendary" class="form-check-label" name="legendary">
-                Legendary
-            </label>
-        </div> -->
-        <input type="submit", value="CREATE">
-        
-    </form>
+    {%include 'form.html'%}
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>
