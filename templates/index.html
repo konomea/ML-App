@@ -27,10 +27,6 @@
         </div>
     </section>
 
-    <!-- this inclusion of the form is temporary -->
-    {%include 'form.html'%} 
-    <br>
-    <br>
 
     <!-- call to action -->
     <section id="action" class="bg-light">
@@ -41,7 +37,7 @@
                 You can see more details about the clustering and classification of your Pokèmon after it's created.
             </p>
             <div class="d-flex justify-content-center">
-                <button class="btn-dark-gradient btn">Go Now</button>
+                <a href="{{ url_for('apply') }}" class="btn-dark-gradient btn" type="button">Go Now</a>
             </div>
         </div>
     </section>

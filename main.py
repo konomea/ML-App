@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, g
 import numpy as np
 import pickle
 
@@ -13,7 +13,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/results', methods=['POST'])
+@app.route('/apply', methods=['GET', 'POST'])
 def apply():
     if request.method == "POST":
         #collect information from request.form['id']
@@ -34,7 +34,8 @@ def apply():
         return render_template('results.html', prediction = y_pred, stats = x, name = name)
     
     else:
-        return render_template('index.html')
+        return render_template('form.html')
+
 
 @app.route('/model')
 def model():
