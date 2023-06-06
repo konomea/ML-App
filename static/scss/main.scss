@@ -7,7 +7,8 @@ $secondary: #E57C23;
 // this import isn't working atm
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
-.vertical_image{
-    max-height: 100%;
-    width: auto;
+.btn-dark-gradient {
+    background-image: linear-gradient($dark, $primary);
+    color: $light;
+    text-align: center;
 }

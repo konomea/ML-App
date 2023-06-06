@@ -14,25 +14,42 @@
     
     <!-- welcome -->
     <section id="welcome">
-        <h1 class="text-light text-center pt-5 pb-3">Welcome to POKCreate!</h1>
-        <div class="row align-items-center">
-            <div class="col-md-6 col-xs-12">
-                <img src="{{url_for('static', filename='images/mascot.png')}}" alt="Blue and white bunny pokemon" class="vertical_image">
+        <h1 class="text-light text-center pt-5">Welcome to POKCreate</h1>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-xl-3 col-lg-5 col-md-6 col-xs-12">
+                <img src="{{url_for('static', filename='images/mascot.png')}}" alt="Blue and white bunny pokemon" class="img-fluid p-5">
             </div>
-            <div class="col-md-6 col-xs-12">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis porro in autem quia atque accusantium.
-                </p>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-xs-12">
+                <h3 class="text-light pe-5 text-center">
+                    Create your own adorable creature in this Pokèmon TCG card creator!
+                </h3>
             </div>
         </div>
     </section>
 
-    {%include 'form.html'%}
+    <!-- this inclusion of the form is temporary -->
+    {%include 'form.html'%} 
+    <br>
+    <br>
+
+    <!-- call to action -->
+    <section id="action" class="bg-light">
+        <div class="container p-5">
+            <h1 class="text-center text-primary p-3">Try it for yourself</h1>
+            <p class="p-3">
+                Your results will be saved in the history tab!
+                You can see more details about the clustering and classification of your Pokèmon after it's created.
+            </p>
+            <div class="d-flex justify-content-center">
+                <button class="btn-dark-gradient btn">Go Now</button>
+            </div>
+        </div>
+    </section>
 
     <!-- footer -->
-    <section class="mt-5">
+    <section id="footer" class="mt-5">
         <div class="container-fluid g-0">
-            <footer class='bg-light'>
+            <footer class='bg-warning'>
                 <div class="container p-4">
                     <div class="row">
                         <div class="col-lg-6 col-md-12 mb-4">
