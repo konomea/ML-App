@@ -5,7 +5,7 @@ $warning:#ECAC3F;
 $secondary: #E57C23;
 
 // this import isn't working atm
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 .vertical_image{
     max-height: 100%;
