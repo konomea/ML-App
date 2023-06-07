@@ -11,5 +11,6 @@ CREATE TABLE pokemon (
     sp_attack INTEGER,
     sp_defense INTEGER,
     desc VARCHAR(60),
-    image BLOB
+    img TEXT,
+    cluster INTEGER NOT NULL
 );

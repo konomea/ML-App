@@ -1,13 +1,15 @@
-from flask import Flask, render_template, request, g
+from flask import Flask, redirect, render_template, request, url_for
 import numpy as np
 import pickle
 
-# get model; what is rb?
+import db
+
 model = pickle.load(open('c:/Users/vmadmin/Documents/ML App/model/classifier.pkl', 'rb'))
 
 
 #initialize
 app = Flask(__name__)
+db.init()
 
 @app.route('/')
 def index():
@@ -25,20 +27,28 @@ def apply():
         sp_attack = int(request.form['sp_attack'])
         sp_defense = int(request.form['sp_defense'])
 
+        desc = request.form['desc']
+        img = request.form['img']
         
-        # #put fields into this to be collected later
+        # issue that these aren't named but model takes named features, look into later
         x = [[hp, attack, defense, speed, sp_attack, sp_defense]]
         y_pred = model.predict(x) #USE MODEL TO GIVE INPUTS HERE
         
+        x = {
+            "hp": hp, "name": name, "attack": attack, "defense": defense, "speed": speed,
+            "sp_attack": sp_attack, "sp_defense": sp_defense, 
+            "desc": desc, "img": img, "cluster": int(y_pred)
+        }
+        db.insert(x)
         
-        return render_template('results.html', prediction = y_pred, stats = x, name = name)
+        return render_template('results.html', stats = x)
     
     else:
         return render_template('form.html')
 
 
-@app.route('/model')
-def model():
+@app.route('/model_info')
+def model_info():
     return render_template('model.html')
     
 @app.route('/about')
@@ -47,6 +57,7 @@ def about():
     
 @app.route('/history')
 def history():
+    # rows = db.get_pokemon()
     return render_template('history.html')
     
 @app.route('/visualize', methods=['GET'])
