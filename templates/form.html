@@ -3,15 +3,16 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>APPLICATION FORM</title>
+    <script src="https://unpkg.com/akar-icons-fonts"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.min.css') }}">
 </head>
 <body class="bg-primary">
     <!-- nav -->
     {% include 'nav.html' %}
 
-    <!-- col1 -->
-    <div class="col-4 bg-light rounded p-3 m-5 col-4">
-        <form method="POST", action="{{url_for('apply')}}">
+    <form method="POST", action="{{url_for('apply')}}" class="row justify-content-center">
+        <!-- col 1 -->
+        <div class="col-4 bg-light rounded p-3 m-5">
             <div class="mb-6">
                 <label for="Pikachu" class="form-label">Name</label>
                 <input required='required' type="text" class="form-control" name="name">
@@ -48,7 +49,7 @@
                 </div>
             </div>
                 
-            <br><br>
+            <br>
 
             <input type="radio" class="btn-check" name="type" name="type1" autocomplete="off" checked>
             <label for="type 1" class="btn btn-secondary">Type 1</label>
@@ -56,16 +57,59 @@
             <label for="type 2" class="btn btn-secondary">Type 2</label>
 
             <br><br>
+
+            <!-- description & skills -->
+            <div class="form-floating">
+                <textarea name="desc" id="desc" cols="15" rows="6" class="form-control"></textarea>
+                <label for="" class="form-label">Description | Skills</label>
+            </div>
+        </div>
+        <!-- end of col 1 -->
+        
+        <!-- col 2 -->
+        <div class="col-4 bg-light rounded p-3 m-5">
+            <!--Image-->
+            <!-- <div>
+                <div class="mb-4 d-flex justify-content-center">
+                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
+                    alt="example placeholder" style="width: 300px;" />
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="btn btn-secondary btn-rounded">
+                        <label class="form-label text-white m-1" for="customFile1">Choose file</label>
+                        <input type="file" class="form-control d-none" id="customFile1" />
+                    </div>
+                </div>
+            </div> -->
+            <figure class="image-container">
+                <img class="img-fluid" id="chosen-image" alt="">
+                <figcaption id="file-name" class="text-center">
+                    
+                </figcaption>
+            </figure>
+
+            <div class="container d-flex justify-content-center">
+                <input name="img" type="file" id="upload-button" accept="image/*">
+                <label for="upload-button" class="btn btn-secondary">
+                    <i class="ai-cloud-upload"></i> &nbsp;
+                    Upload a Picture
+                </label>
+            </div>
             
-            <button type="submit" class="btn">CREATE</button>
-            
-        </form>
-    </div>
+        </div>
+
+        <br>
+
+        <div class="container d-flex justify-content-center">
+            <button type="submit" class="btn btn-outline-light btn-lg"> CREATE </button>   
+        </div>
+        
+    </form>
 
     <!-- col2 -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
- 
+    <script src="{{url_for('static', filename='directives/script.js')}}"></script>
 </body>
 </html>
     
