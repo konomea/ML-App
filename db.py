@@ -35,6 +35,5 @@ def insert(x):
 # TODO: figure out the layout for the history - be that through cards or some other method   
 def get_pokemon():
     sql = f"SELECT * FROM pokemon"
-    rows = execute(sql)
-    # for row in rows:
+    return execute(sql)
         

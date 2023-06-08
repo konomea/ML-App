@@ -57,7 +57,26 @@ def about():
     
 @app.route('/history')
 def history():
-    # rows = db.get_pokemon()
+    rows = db.get_pokemon()
+    html = ""
+    for row in rows:
+        html += f"""
+        <div class='col-md-4 col-xl-3'>
+            <div class='card'>
+                <img src="{row['img']}" class='card-img-top'>
+                <div class='card-body'>
+                    <h5 class='card-title'>{row['name']}</h5>
+                    <p class='card-text'>{row['cluster']}</p>
+                    <div class='d-flex justify-content-center'>
+                        <a href='#' class='btn btn-dark-gradient'>Full Results</a>
+                    </div>
+                </div>
+            </div>
+        </div>"""
+    
+    f = open('templates/history_cards.html', 'w')
+    f.write(html)
+    f.close()
     return render_template('history.html')
     
 @app.route('/visualize', methods=['GET'])
