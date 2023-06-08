@@ -5,6 +5,82 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.min.css') }}">
 </head>
 <body>
+    {% include 'nav.html' %}
+    <div class="container-fluid mt-5 gx-0">
+        <div class="p-4 p-md-5 mb-4 text-light bg-primary">
+            <div class="container col-8 px-0">
+                <h1 class="display-4">Clustering & Classification Model Details</h1>
+                <p class="lead my-3 col-lg-6 col-md-12">The Pokemon dataset on <a class="text-warning" href="https://www.kaggle.com/datasets/abcsds/pokemon">Kaggle</a> is the foundation for the model used here. The unlabelled data was clustered first, then a classification model was trained on the now-labelled data.</p>
+            </div>
+        </div>
+    </div>
     
+    <section id="clustering" class="container mt-5">
+        <h3>KMeans Clustering</h3>
+        <p class="lead my-3">To find clusters of pokemon, the KMeans approach was used. It was an effective choice as the features were all numeric and the data had few dimensions.</p>
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <img class="img-fluid" src="{{url_for('static', filename='images/elbow chart.png')}}" alt="Elbow Chart with vertical scale inertia and horizontal scale as choice of K">
+            </div>
+            <div class="col-6">
+                <p class="lead">
+                    To select K, or the number of clusters, the elbow method was used in combination with domain knowledge of how character clusters are generally created in games. <br><br>
+                    Based on these things, the selected K value was 5. This parameter, along with n_init=100 and a few others, was given to the sklearn KMeans model. <br>
+                </p>
+            </div>
+        </div>
+        <p class="lead my-3">
+            The clustered data was labelled accordingly and therefore suitably prepared to train a classification model. <br>
+        </p>
+        {% include 'cluster_table.html' %}
+    </section>
+
+    <section id="classification" class="container mt-5">
+        <h3>KNN Classification</h3>
+        <p class="lead my-3">
+            80% of the data after clustering was used for training. The other 20% was kept for testing. The specific model used here is the KNeighborsClassifier from sklearn. <br>
+        </p>
+        <div class="row">
+            <p class="col-6 lead my-3">
+                To test the model's scores over different values of K, the parameter for number of neighbours, we use cross validation. Specifically, we do cv=5 to specify 5 folds in a KFold. <br>
+                Based on the chart, the number of neighbors K was set to 7. Note that the K in classification is different from the K in the clustering!
+            </p>
+            <img src="{{ url_for('static', filename='images/num_neighbors chart.png')}}" alt="" class="col-md-6 col-lg-4 img-fluid">
+        </div>
+        <p class="lead my-3">
+            To test the trained KNN model with k=7, the accuracy, precision, and recall were tested per cluster.
+        </p>
+        <div class="container col-m-12 col-lg-8 justify-content-center">
+            <table border="1" class="dataframe table table-bordered text-center">
+                <tr class="table-warning">
+                    <td class="fw-bold">Accuracy</td>
+                    <td colspan="5">90.625%</td>
+                </tr>
+                <tr class="table-secondary">
+                    <td class="fw-bold">Precision</td>
+                    <td>94.444%</td>
+                    <td>96%</td>
+                    <td>95.652%</td>
+                    <td>81.613%</td>
+                    <td>90%</td>
+                </tr>
+                <tr class="table-primary">
+                    <td class="fw-bold">Recall</td>
+                    <td>77.273%</td>
+                    <td>100%</td>
+                    <td>91.667%</td>
+                    <td>93.023%</td>
+                    <td>78.261%</td>
+                </tr>
+            </table>
+        </div>
+        <p class="lead my-3">
+            For the purpose of this small experimental project, these results would be more than sufficient. The trained model was then exported and deployed here. <br>
+            <br>
+            Test the model's predictions <a class="text-primary" href="{{url_for('apply')}}">here</a>.
+        </p>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>
