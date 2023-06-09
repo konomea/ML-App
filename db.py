@@ -32,8 +32,10 @@ def insert(x):
     # sql = "SELECT last_insert_rowid();"
     # return (execute(sql))[0]
 
-# TODO: figure out the layout for the history - be that through cards or some other method   
 def get_pokemon():
     sql = f"SELECT * FROM pokemon"
     return execute(sql)
         
+def get_pokemon_from_id(id):
+    sql = f"SELECT * FROM pokemon WHERE id='{id}'"
+    return execute(sql, one=True)

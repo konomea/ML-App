@@ -9,7 +9,7 @@ model = pickle.load(open('c:/Users/vmadmin/Documents/ML App/model/classifier.pkl
 
 #initialize
 app = Flask(__name__)
-db.init()
+# db.init()
 
 @app.route('/')
 def index():
@@ -46,6 +46,16 @@ def apply():
     else:
         return render_template('form.html')
 
+@app.route('/record/<id>')
+def record(id):
+    row = db.get_pokemon_from_id(id)
+    print(row)
+    x = {
+            "hp": row["hp"], "name": row["name"], "attack": row["attack"], "defense": row["defense"], "speed": row["speed"],
+            "sp_attack": row["sp_attack"], "sp_defense": row["sp_defense"], 
+            "desc": row["desc"], "img": row["img"], "cluster": row["cluster"]
+        }
+    return render_template('results.html', stats = x)
 
 @app.route('/model_info')
 def model_info():
@@ -68,7 +78,7 @@ def history():
                     <h5 class='card-title'>{row['name']}</h5>
                     <p class='card-text'>{row['cluster']}</p>
                     <div class='d-flex justify-content-center'>
-                        <a href='#' class='btn btn-dark-gradient'>Full Results</a>
+                        <a href='{{{{url_for('record', id={row['id']})}}}}' class='btn btn-dark-gradient'>Full Results</a>
                     </div>
                 </div>
             </div>
@@ -85,4 +95,3 @@ def visualize():
 
 if __name__=="__main__":
     app.run(debug=True)
-    
