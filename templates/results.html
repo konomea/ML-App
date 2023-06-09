@@ -15,16 +15,47 @@
         
         {%else%}
         <div class="col-md-6 col-xl-5 bg-light rounded">
-            <h2 class="text-center">skills</h2>
+            <h3 class="text-center">stats</h3>
+            <div class="container">
+                <table class="table table-bordered text-center">
+                    <tr class="table-danger">
+                        <th scope="row" style="width: 30%">HP</th>
+                        <td style="width: 70%">{{stats['hp']}}</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th scope="row" style="width: 30%">Attack</th>
+                        <td style="width: 70%">{{stats['attack']}}</td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th scope="row" style="width: 30%">Defense</th>
+                        <td style="width: 70%">{{stats['defense']}}</td>
+                    </tr>
+                    <tr class="table-success">
+                        <th scope="row" style="width: 30%">Speed</th>
+                        <td style="width: 70%">{{stats['speed']}}</td>
+                    </tr>
+                    <tr class="table-primary">
+                        <th scope="row" style="width: 30%">Sp. Attack</th>
+                        <td style="width: 70%">{{stats['sp_attack']}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" style="width: 30%">Sp. Defense</th>
+                        <td style="width: 70%">{{stats['sp_defense']}}</td>
+                    </tr>
+                </table>
+                <h4 class="text-center">skills & description</h4>
+                <p class="lead my-3">
+                    {{ stats['desc'] }}
+                </p>
+            </div>
         </div>
 
         <div class="col-md-5 col-xl-3">
             <h3 class="bg-dark text-light text-center rounded py-1">{{stats['name']}}</h3>
             <div class="container rounded bg-light" style="border:14px solid #ECAC3F;">
-                <img src="{{ stats['img'] }}" alt="" class="img-fluid">
+                <img src="{{ stats['img'] }}" alt="image of your pokemon" class="img-fluid">
             </div>
         </div>
-        
         
         
         {%endif%}

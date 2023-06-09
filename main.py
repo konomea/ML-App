@@ -49,7 +49,6 @@ def apply():
 @app.route('/record/<id>')
 def record(id):
     row = db.get_pokemon_from_id(id)
-    print(row)
     x = {
             "hp": row["hp"], "name": row["name"], "attack": row["attack"], "defense": row["defense"], "speed": row["speed"],
             "sp_attack": row["sp_attack"], "sp_defense": row["sp_defense"], 
