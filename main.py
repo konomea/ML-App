@@ -11,6 +11,18 @@ model = pickle.load(open('c:/Users/vmadmin/Documents/ML App/model/classifier.pkl
 app = Flask(__name__)
 # db.init()
 
+cluster_name =  {0: 'Generally Meta',
+                 1: 'Starter',
+                 2: 'DEF Tank',
+                 3: 'HP Tank',
+                 4: 'Speed Runner'}
+cluster_desc = {0: 'With high stats across the board, these pokemon are the overpowered meta type. Their stats average attack 120, speed 100, and 90-110 for the rest.',
+                1: 'These pokemon have low stats across the board. As all rounders, all their stats average around 50. This cluster contains all the starter-like pokemon.',
+                2: 'One type of tank discovered in the clustering: These tanks have high defense and sp. defense, but all other stats suffer for it, including HP. This would be better for taking multiple smaller hits!',
+                3: 'One type of tank discovered in the clustering: These tanks have ~100 HP, 90 attack, and decent speed - though other stats including defense suffer for it. These types are better for taking bigger hits (as opposed to many smaller ones)!',
+                4: 'This cluster contains pokemon of ~90 speed and decent attack. These types cannot withstand much damage, but will get their attacks out before the opponents. It would be a great choice to give them stun abilities to use at the start!'}
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -41,7 +53,7 @@ def apply():
         }
         db.insert(x)
         
-        return render_template('results.html', stats = x)
+        return render_template('results.html', stats = x, cname = cluster_name[x['cluster']], cdesc = cluster_desc[x['cluster']])
     
     else:
         return render_template('form.html')
@@ -54,7 +66,7 @@ def record(id):
             "sp_attack": row["sp_attack"], "sp_defense": row["sp_defense"], 
             "desc": row["desc"], "img": row["img"], "cluster": row["cluster"]
         }
-    return render_template('results.html', stats = x)
+    return render_template('results.html', stats = x, cname = cluster_name[row['cluster']], cdesc = cluster_desc[row['cluster']])
 
 @app.route('/model_info')
 def model_info():
@@ -75,7 +87,7 @@ def history():
                 <img src="{row['img']}" class='card-img-top'>
                 <div class='card-body'>
                     <h5 class='card-title'>{row['name']}</h5>
-                    <p class='card-text'>{row['cluster']}</p>
+                    <p class='card-text'>{cluster_name[row['cluster']]}</p>
                     <div class='d-flex justify-content-center'>
                         <a href='{{{{url_for('record', id={row['id']})}}}}' class='btn btn-dark-gradient'>Full Results</a>
                     </div>
@@ -90,7 +102,7 @@ def history():
     
 @app.route('/visualize', methods=['GET'])
 def visualize():
-    return render_template('visualize.html')
+    return render_template('visualize.html', cname = cluster_name, cdesc = cluster_desc)
 
 if __name__=="__main__":
     app.run(debug=True)

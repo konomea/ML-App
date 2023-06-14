@@ -11,6 +11,9 @@ $secondary: #E57C23;
     color: $light;
     text-align: center;
 }
+.btn-dark-gradient:hover{
+    color: #ECAC3F;
+}
 input[type="file"] {
     display: none;
 }
