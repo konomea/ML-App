@@ -83,7 +83,7 @@ def history():
     for row in rows:
         html += f"""
         <div class='col-md-4 col-xl-3'>
-            <div class='card'>
+            <div class='card mt-3'>
                 <img src="{row['img']}" class='card-img-top'>
                 <div class='card-body'>
                     <h5 class='card-title'>{row['name']}</h5>
